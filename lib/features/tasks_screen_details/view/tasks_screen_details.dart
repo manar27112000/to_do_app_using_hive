@@ -35,13 +35,10 @@ class TasksScreenDetails extends StatelessWidget {
                 );
               },
               onFavorite: () {
-                // TODO: Add to favorites
               },
               onEdit: () {
-                // TODO: Edit task
               },
               onDelete: () {
-                // TODO: Delete task
               },
             );
           },
