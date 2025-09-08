@@ -1,41 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list1/core/app_colors.dart';
 import 'package:todo_list1/core/app_styles.dart';
+import 'package:todo_list1/features/settings_screen/view/wedgits/section_title.dart';
+import 'package:todo_list1/features/settings_screen/view/wedgits/setting_item.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
-
-  Widget buildSectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-      child: Text(
-        title,
-        style: Styles.textStyleBold20.copyWith(color: Colors.grey.shade600),
-      ),
-    );
-  }
-
-  Widget buildSettingItem({
-    required String title,
-    String? subtitle,
-    required IconData icon,
-    Color? iconColor,
-    VoidCallback? onTap,
-    bool isDestructive = false,
-  }) {
-    return ListTile(
-      leading: Icon(icon, color: iconColor ?? AppColors.primaryColor),
-      title: Text(
-        title,
-        style: Styles.textStyle16.copyWith(
-          color: isDestructive ? Colors.red : Colors.black,
-        ),
-      ),
-      subtitle: subtitle != null ? Text(subtitle) : null,
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
-      onTap: onTap,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,54 +18,48 @@ class SettingsScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
-        children: [
+        children: const [
           /// Section: General
-          buildSectionTitle("General"),
-          buildSettingItem(
+          SettingsSectionTitle(title: "General"),
+          SettingItem(
             title: "Notifications",
             icon: Icons.notifications_outlined,
-            onTap: () {},
           ),
-          buildSettingItem(
+          SettingItem(
             title: "Theme",
             subtitle: "System",
             icon: Icons.brightness_6_outlined,
-            onTap: () {},
           ),
-          buildSettingItem(
+          SettingItem(
             title: "Language",
             subtitle: "English",
             icon: Icons.language_outlined,
-            onTap: () {},
           ),
-          const Divider(),
+          Divider(),
 
           /// Section: Account
-          buildSectionTitle("Account"),
-          buildSettingItem(
+          SettingsSectionTitle(title: "Account"),
+          SettingItem(
             title: "Manage Account",
             icon: Icons.person_outline,
-            onTap: () {},
           ),
-          buildSettingItem(
+          SettingItem(
             title: "Sign Out",
             icon: Icons.logout,
-            onTap: () {},
             isDestructive: true,
           ),
-          const Divider(),
+          Divider(),
 
           /// Section: About
-          buildSectionTitle("About"),
-          buildSettingItem(
+          SettingsSectionTitle(title: "About"),
+          SettingItem(
             title: "App Version",
             subtitle: "1.0.0",
             icon: Icons.info_outline,
           ),
-          buildSettingItem(
+          SettingItem(
             title: "Privacy Policy",
             icon: Icons.privacy_tip_outlined,
-            onTap: () {},
           ),
         ],
       ),
