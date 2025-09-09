@@ -1,15 +1,29 @@
+import 'package:hive_flutter/adapters.dart';
+
 import '../../task_details/model/attachment_model.dart';
+part 'task_model.g.dart';
 
 enum TaskCategory { work, personal, study, other }
 
-class Task {
+
+@HiveType(typeId: 0)
+class Task extends HiveObject{
+  @HiveField(0)
   final String id;
+  @HiveField(1)
+
   final String title;
+  @HiveField(2)
   final String details;
+  @HiveField(3)
   final bool isFavourite;
+  @HiveField(4)
   final bool isCompleted;
+  @HiveField(5)
   final TaskCategory category;
+  @HiveField(6)
   final DateTime createdAt;
+  @HiveField(7)
   final List<Attachment> attachments;
 
   Task({
