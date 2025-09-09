@@ -6,17 +6,17 @@ part of 'task_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TaskAdapter extends TypeAdapter<Task> {
+class TaskAdapter extends TypeAdapter<TaskModel> {
   @override
   final int typeId = 0;
 
   @override
-  Task read(BinaryReader reader) {
+  TaskModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Task(
+    return TaskModel(
       id: fields[0] as String,
       title: fields[1] as String,
       details: fields[2] as String,
@@ -29,7 +29,7 @@ class TaskAdapter extends TypeAdapter<Task> {
   }
 
   @override
-  void write(BinaryWriter writer, Task obj) {
+  void write(BinaryWriter writer, TaskModel obj) {
     writer
       ..writeByte(8)
       ..writeByte(0)

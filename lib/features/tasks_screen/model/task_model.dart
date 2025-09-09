@@ -7,7 +7,7 @@ enum TaskCategory { work, personal, study, other }
 
 
 @HiveType(typeId: 0)
-class Task extends HiveObject{
+class TaskModel extends HiveObject{
   @HiveField(0)
   final String id;
   @HiveField(1)
@@ -26,7 +26,7 @@ class Task extends HiveObject{
   @HiveField(7)
   final List<Attachment> attachments;
 
-  Task({
+  TaskModel({
     required this.id,
     required this.title,
     required this.details,
@@ -55,8 +55,8 @@ class Task extends HiveObject{
   }
 
   /// تحويل من Map لـ Task
-  factory Task.fromMap(Map<String, dynamic> map) {
-    return Task(
+  factory TaskModel.fromMap(Map<String, dynamic> map) {
+    return TaskModel(
       id: map['id'],
       title: map['title'],
       details: map['details'],
