@@ -6,13 +6,14 @@ class CustomTextField extends StatelessWidget {
   final int minLines;
   final int maxLines;
   final TextEditingController? controller;
+ final void Function(String?)? onSaved;
 
   const CustomTextField({
     super.key,
     required this.label,
     this.minLines = 1,
-    this.maxLines = 1,
-    this.controller,
+    required  this.maxLines ,
+    required this.controller,   this.onSaved,
   });
 
   @override
@@ -23,6 +24,14 @@ class CustomTextField extends StatelessWidget {
         Text(label, style: Styles.textStyleBold16),
         const SizedBox(height: 10),
         TextFormField(
+          validator: (value){
+            if(value?.isEmpty ?? true){
+              return 'field is required';
+            }else{
+              return null;
+            }
+          },
+          onSaved: onSaved,
           controller: controller,
           minLines: minLines,
           maxLines: maxLines,
