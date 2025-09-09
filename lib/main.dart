@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:todo_list1/features/layout_screen/view/layout_screen.dart';
 
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
+  await Hive.openBox('tasks');
   runApp(const MyApp());
 }
 
