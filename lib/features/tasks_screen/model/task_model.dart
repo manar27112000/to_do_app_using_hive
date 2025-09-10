@@ -27,7 +27,7 @@ class TaskModel extends HiveObject{
   final List<Attachment> attachments;
 
   TaskModel({
-    required this.id,
+     this.id='',
     required this.title,
     required this.details,
     this.isFavourite = false,

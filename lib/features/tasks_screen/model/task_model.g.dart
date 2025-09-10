@@ -6,7 +6,7 @@ part of 'task_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TaskAdapter extends TypeAdapter<TaskModel> {
+class TaskModelAdapter extends TypeAdapter<TaskModel> {
   @override
   final int typeId = 0;
 
@@ -56,7 +56,7 @@ class TaskAdapter extends TypeAdapter<TaskModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TaskAdapter &&
+      other is TaskModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

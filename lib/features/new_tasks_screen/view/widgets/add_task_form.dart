@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list1/features/new_tasks_screen/view/widgets/save_button.dart';
 import 'package:todo_list1/features/new_tasks_screen/view/widgets/upload_button.dart';
+import 'package:todo_list1/features/task_details/model/attachment_model.dart';
+import 'package:todo_list1/features/tasks_screen/model/task_model.dart';
 
 import '../../../../core/app_styles.dart';
-import '../../../task_details/model/attachment_model.dart';
+import '../../../tasks_screen/view_model/add_task/add_task_cubit.dart';
 import 'custom_text_field.dart';
 
 class AddTaskForm extends StatefulWidget {
@@ -66,6 +69,10 @@ class _AddTaskFormState extends State<AddTaskForm> {
           SaveButton(onPressed: () {
             if(_formKey.currentState!.validate()) {
               _formKey.currentState!.save();
+              var taskModel = TaskModel( title: title!, details: details!, createdAt: DateTime.now(), attachments: attachments);
+              BlocProvider.of<  AddTaskCubit>(context).addTask(
+               taskModel
+              );
             }else{
               autovalidateMode = AutovalidateMode.always;
               setState(() {});

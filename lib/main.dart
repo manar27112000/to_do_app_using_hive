@@ -4,18 +4,24 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:todo_list1/features/layout_screen/view/layout_screen.dart';
 import 'package:todo_list1/features/tasks_screen/view_model/add_task/add_task_cubit.dart';
 
+import 'features/task_details/model/attachment_model.dart';
 import 'features/tasks_screen/model/task_model.dart';
 import 'my_bloc_observer.dart';
 
 
-void main() async{
-    Bloc.observer = MyBlocObserver();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   await Hive.initFlutter();
-  await Hive.openBox('tasks');
-  Hive.registerAdapter(TaskAdapter());
+
+  Hive.registerAdapter(TaskModelAdapter());
+  Hive.registerAdapter(AttachmentAdapter());
+
+  await Hive.openBox<TaskModel>('tasks');
 
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
