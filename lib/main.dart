@@ -5,12 +5,15 @@ import 'package:todo_list1/features/layout_screen/view/layout_screen.dart';
 import 'package:todo_list1/features/tasks_screen/view_model/add_task/add_task_cubit.dart';
 
 import 'features/tasks_screen/model/task_model.dart';
+import 'my_bloc_observer.dart';
 
 
 void main() async{
+    Bloc.observer = MyBlocObserver();
   await Hive.initFlutter();
   await Hive.openBox('tasks');
   Hive.registerAdapter(TaskAdapter());
+
   runApp(const MyApp());
 }
 
