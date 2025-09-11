@@ -24,6 +24,7 @@ class NewTasksScreen extends StatelessWidget {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Task added successfully')),
                     );
+                    Navigator.pop(context);
                   }
                   if (state is AddTaskFailureState) {
                     ScaffoldMessenger.of(context).showSnackBar(
